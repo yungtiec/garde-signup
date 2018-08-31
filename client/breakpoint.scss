@@ -1,0 +1,61 @@
+@mixin breakpoint($min: 0, $max: 0) {
+  $type: type-of($min);
+
+  @if $type==string {
+    @if $min==xxs {
+      @media (max-width: 375px) {
+        @content;
+      }
+    }
+
+    @else if $min==xs {
+      @media (min-width: 376px) and  (max-width: 767px) {
+        @content;
+      }
+    }
+
+    @else if $min==sm {
+      @media (min-width: 768px) and (max-width: 991px) {
+        @content;
+      }
+    }
+
+    @else if $min==md {
+      @media (min-width: 992px) and (max-width: 1199px) {
+        @content;
+      }
+    }
+
+    @else if $min==lg {
+      @media (min-width: 1200px) and (max-width: 1349px) {
+        @content;
+      }
+    }
+
+    @else if $min==xl {
+      @media (min-width: 1350px) {
+        @content;
+      }
+    }
+
+    @else {
+      @warn "Breakpoint mixin supports: xxs, xs, sm, md, lg";
+    }
+  }
+
+  @else if $type==number {
+    $query: "all" !default;
+    @if $min !=0 and $max !=0 {
+      $query: "(min-width: #{$min}px) and (max-width: #{$max})px";
+    }
+    @else if $min !=0 and $max==0 {
+      $query: "(min-width: #{$min})px";
+    }
+    @else if $min==0 and $max !=0 {
+      $query: "(max-width: #{$max})px";
+    }
+    @media #{$query} {
+      @content;
+    }
+  }
+}

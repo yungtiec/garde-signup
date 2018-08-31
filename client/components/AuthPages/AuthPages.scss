@@ -1,0 +1,105 @@
+@import '../../breakpoint';
+
+.auth-page {
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 650px;
+  @include breakpoint(xxs) {
+    max-width: 370.5px;
+  }
+  @include breakpoint(xs) {
+    max-width: 370.5px;
+  }
+  @include breakpoint(sm) {
+    max-width: 370.5px;
+  }
+  @include breakpoint(md) {
+    max-width: 617.5px;
+  }
+}
+
+.auth__form-header {
+  margin-top: 56px;
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+.auth__form {
+  padding: 30px;
+  border: 1px solid #eee;
+}
+
+.oauth-btns {
+  padding: 60px 30px;
+  border: 1px solid #eee;
+  border-top: 0;
+  width: 100%;
+}
+
+.auth-form__form-footer {
+  margin-top: 15px;
+}
+
+.auth-form__form-footer__left {
+  text-align: center;
+  @media (min-width: 48em) {
+    float: left;
+  }
+}
+
+.auth-form__form-footer__left nav a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.auth-form__form-footer__left nav a:after {
+  content: '\00b7';
+  margin: 0 5px;
+  margin-right: -20px;
+}
+
+.auth-form__form-footer__left nav a:last-of-type:after {
+  content: '';
+}
+
+.auth-form__form-footer__right {
+  text-align: center;
+  @media (min-width: 48em) {
+    float: right;
+  }
+}
+
+.message__has-account {
+}
+
+.btn__sign-in {
+  text-decoration: none;
+  margin-left: 15px;
+  border: 1px solid white;
+  display: inline-block;
+  padding: 5px 10px;
+}
+
+.btn__sign-in:hover {
+  text-decoration: none;
+}
+
+.auth-page__footer {
+  clear: both;
+  text-align: center;
+}
+
+.auth-page__footer {
+  position: relative;
+  min-height: 100px;
+}
+
+.auth-page__footer .logo-consensys {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}

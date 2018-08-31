@@ -2,32 +2,78 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const User = db.define('user', {
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    // Making `.password` act like a func hides it when serializing to JSON.
-    // This is a hack to get around Sequelize's lack of a "private" option.
-    get() {
-      return () => this.getDataValue('password')
+const User = db.define(
+  'user',
+  {
+    email: {
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false
+    },
+    password: {
+      type: Sequelize.STRING,
+      // Making `.password` act like a func hides it when serializing to JSON.
+      // This is a hack to get around Sequelize's lack of a "private" option.
+      get() {
+        return () => this.getDataValue('password')
+      }
+    },
+    salt: {
+      type: Sequelize.STRING,
+      // Making `.salt` act like a function hides it when serializing to JSON.
+      // This is a hack to get around Sequelize's lack of a "private" option.
+      get() {
+        return () => this.getDataValue('salt')
+      }
+    },
+    googleId: {
+      type: Sequelize.STRING
+    },
+    uportAddress: {
+      type: Sequelize.STRING
+    },
+    first_name: {
+      type: Sequelize.STRING
+    },
+    last_name: {
+      type: Sequelize.STRING
+    },
+    name: {
+      type: Sequelize.STRING
+    },
+    username: {
+      type: Sequelize.STRING
+    },
+    organization: {
+      type: Sequelize.STRING
+    },
+    restricted_access: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    anonymity: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    onboard: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    reset_password_token: {
+      type: Sequelize.STRING
+    },
+    reset_password_expiration: {
+      type: Sequelize.INTEGER
     }
   },
-  salt: {
-    type: Sequelize.STRING,
-    // Making `.salt` act like a function hides it when serializing to JSON.
-    // This is a hack to get around Sequelize's lack of a "private" option.
-    get() {
-      return () => this.getDataValue('salt')
+  {
+    getterMethods: {
+      displayName() {
+        return this.anonymity ? 'Anonymous' : this.name
+      }
     }
-  },
-  googleId: {
-    type: Sequelize.STRING
   }
-})
+)
 
 module.exports = User
 
