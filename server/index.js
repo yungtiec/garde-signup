@@ -68,6 +68,12 @@ const createApp = () => {
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
+  app.get("/:route/public/:file", (req, res, next) => {
+    res.redirect(`/${req.params.file}`);
+  });
+  app.get("/public/:file", (req, res, next) => {
+    res.redirect(`/${req.params.file}`);
+  });
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {

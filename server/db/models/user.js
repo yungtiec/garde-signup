@@ -59,6 +59,10 @@ const User = db.define(
       type: Sequelize.BOOLEAN,
       defaultValue: false
     },
+    preboard_step: {
+      type: Sequelize.INTEGER,
+      defaultValue: 1
+    },
     reset_password_token: {
       type: Sequelize.STRING
     },

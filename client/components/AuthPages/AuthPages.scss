@@ -41,6 +41,7 @@
 
 .auth-form__form-footer {
   margin-top: 15px;
+  font-size: 14px;
 }
 
 .auth-form__form-footer__left {
@@ -52,17 +53,6 @@
 
 .auth-form__form-footer__left nav a {
   text-decoration: none;
-  font-size: 14px;
-}
-
-.auth-form__form-footer__left nav a:after {
-  content: '\00b7';
-  margin: 0 5px;
-  margin-right: -20px;
-}
-
-.auth-form__form-footer__left nav a:last-of-type:after {
-  content: '';
 }
 
 .auth-form__form-footer__right {
@@ -70,21 +60,6 @@
   @media (min-width: 48em) {
     float: right;
   }
-}
-
-.message__has-account {
-}
-
-.btn__sign-in {
-  text-decoration: none;
-  margin-left: 15px;
-  border: 1px solid white;
-  display: inline-block;
-  padding: 5px 10px;
-}
-
-.btn__sign-in:hover {
-  text-decoration: none;
 }
 
 .auth-page__footer {

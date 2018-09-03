@@ -1,5 +1,6 @@
 import 'normalize.css'
 import './bootstrap.css'
+import './css/global.scss'
 import 'Tether'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import React from 'react'

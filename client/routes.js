@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
-import {me} from './store'
+import {me, isLoggedIn} from './store'
+import {Preboarding} from './scenes'
 
 class Routes extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class Routes extends Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/home" component={UserHome} />
+        <Route path="/preboarding" component={Preboarding} />
       </Switch>
     )
   }
@@ -25,7 +26,7 @@ class Routes extends Component {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.data.user.id
+    isLoggedIn: isLoggedIn(state)
   }
 }
 

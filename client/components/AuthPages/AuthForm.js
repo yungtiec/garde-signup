@@ -67,9 +67,11 @@ export default function AuthForm({
         />
       </div>
       {authMethod === 'login' ? (
-        <Link to="/request-password-reset" className="">
-          forget password?
-        </Link>
+        <div className="form-group d-flex flex-column">
+          <Link to="/request-password-reset" className="">
+            forget password?
+          </Link>
+        </div>
       ) : null}
       {authMethod === 'signup' && (
         <div className="form-group  d-flex flex-column">

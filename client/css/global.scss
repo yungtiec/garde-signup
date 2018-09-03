@@ -1,0 +1,22 @@
+.route__loader div {
+  position: fixed;
+  height: 2em !important;
+  width: 2em !important;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.ReactModal__Overlay {
+  z-index: 3;
+}
+
+.ReactModal__Content {
+  z-index: 3;
+  top: 150px !important;
+  bottom: 150px !important;
+  width: 500px;
+  margin: 0 auto;
+}

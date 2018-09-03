@@ -45,6 +45,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.1",
     "formsy-react": "^1.1.4",
+    "halogenium": "^2.2.3",
     "history": "^4.6.3",
     "jquery": "^3.3.1",
     "jquery.easing": "^1.4.1",
