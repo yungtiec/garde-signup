@@ -1,0 +1,95 @@
+@import "../css/breakpoint";
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+}
+
+.navbar {
+  height: 90px;
+  background: white;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 65px;
+  padding-right: 65px; // box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.17);
+  @include breakpoint(xl) {
+    padding-left: 145px;
+    padding-right: 145px;
+  }
+  @include breakpoint(xs) {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+.logo-header {
+  margin-right: 10px;
+  @include breakpoint(xs) {
+    margin-left: -10px;
+  }
+}
+
+.navbar--logo > .box--right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 15px;
+}
+
+.navbar__nav-item {
+  cursor: pointer;
+  margin: 0;
+}
+
+.box--right .navbar__nav-item {
+  padding: 0 40px;
+  margin-top: 0;
+}
+.box--left .navbar__nav-item {
+  padding: 0 20px;
+  margin-top: 5px;
+}
+
+.navbar__nav-item.last {
+  padding-right: 0px;
+}
+
+.box--left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.navbar__nav-item.notification-count {
+  position: relative;
+}
+
+.navbar__nav-item.notification-count[data-count]:not([data-count=""]):not([data-count="0"]):after {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  content: attr(data-count);
+  font-size: 30%;
+  padding: 0.4em;
+  border-radius: 2em;
+  line-height: 0.75em;
+  color: white;
+  background: rgb(255, 0, 0);
+  text-align: center;
+  min-width: 1.5em;
+  font-weight: bold;
+}

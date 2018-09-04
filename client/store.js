@@ -25,3 +25,5 @@ const store = createStore(enableBatching(reducer), middleware)
 export default store
 export * from './data/user/reducer'
 export * from './data/user/actions'
+export * from './data/environment/reducer'
+export * from './data/environment/actions'

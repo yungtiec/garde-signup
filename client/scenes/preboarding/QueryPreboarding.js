@@ -6,13 +6,14 @@ import PropTypes from 'prop-types'
 import autoBind from 'react-autobind'
 import Loadable from 'react-loadable'
 import {getUser} from '../../store'
+import * as colors from '../../color-constants'
 
 const LoadableQueryPreboarding = Loadable({
   loader: () => import('./Preboarding'),
   loading: () => (
     <SquareLoader
       className="route__loader"
-      color="#2d4dd1"
+      color={colors.burntSienna}
       size="16px"
       margin="4px"
     />

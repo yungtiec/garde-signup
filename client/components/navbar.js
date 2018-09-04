@@ -1,56 +1,56 @@
-import React from 'react'
+import './Navbar.scss'
+import React, {Component} from 'react'
+import autoBind from 'react-autobind'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import {withRouter, Link} from 'react-router-dom'
+import {isLoggedIn} from '../store'
+import {AuthWidget} from './index'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>BOILERMAKER</h1>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
-)
+class Navbar extends Component {
+  constructor(props) {
+    super(props)
+    autoBind(this)
+  }
 
-/**
- * CONTAINER
- */
+  render() {
+    const {isLoggedIn} = this.props
+
+    return (
+      <div className="header">
+        <nav className="navbar navbar-expand-md no-gutters navbar--logo">
+          <div className="box--left">
+            <Link className="logo-header my-0 ml-0" to="/landing">
+              <img
+                width="150px"
+                height="auto"
+                src="/img/logo-orange.png"
+              />
+            </Link>
+          </div>
+          <div className="box--right">
+            {isLoggedIn ? (
+              <AuthWidget inNavbar={true} />
+            ) : (
+              <Link to="/login" className="navbar__nav-item last">
+                login
+              </Link>
+            )}
+          </div>
+        </nav>
+      </div>
+    )
+  }
+}
+
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: isLoggedIn(state)
   }
 }
 
-const mapDispatch = dispatch => {
-  return {
-    handleClick() {
-      dispatch(logout())
-    }
-  }
-}
+export default withRouter(connect(mapState, {})(Navbar))
 
-export default connect(mapState, mapDispatch)(Navbar)
-
-/**
- * PROP TYPES
- */
 Navbar.propTypes = {
-  handleClick: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired
 }

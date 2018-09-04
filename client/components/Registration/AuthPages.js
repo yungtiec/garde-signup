@@ -11,10 +11,16 @@ import {
   resetPassword,
   verifyUportOnMobile
 } from '../../data/reducer'
-import AuthForm from './AuthForm'
-import PasswordResetRequestForm from './PasswordResetRequestForm'
-import PasswordResetForm from './PasswordResetForm'
-import AuthFormFooter from './AuthFormFooter'
+import {
+  AuthForm,
+  PasswordResetRequestForm,
+  PasswordResetForm,
+  RegistrationCardFooter,
+  RegistrationBackground,
+  RegistrationHeader,
+  RegistrationCard,
+  RegistrationFooter
+} from './index'
 
 class AuthPages extends Component {
   static propTypes = {
@@ -74,60 +80,40 @@ class AuthPages extends Component {
     const {authMethod, authMethodLabel, error, signinWithUport} = this.props
 
     return (
-      <div className="auth-page">
-        <div className="auth__form-header">
-          <Link className="my-0 mx-0" to="/landing">
-            <img
-              width="170px"
-              height="auto"
-              className="logo__large"
-              src="/img/logo-orange.png"
+      <RegistrationBackground>
+        <RegistrationHeader />
+        <RegistrationCard>
+          {authMethod === 'requestPasswordReset' ? (
+            <PasswordResetRequestForm
+              handleSubmit={this.handleSubmit}
+              enableButton={this.enableButton}
+              disableButton={this.disableButton}
+              authMethod={authMethod}
+              authMethodLabel={authMethodLabel}
             />
-          </Link>
-        </div>
-        <div className="auth__form-wrapper">
-          <div className="auth__form-contents">
-            {authMethod === 'requestPasswordReset' ? (
-              <PasswordResetRequestForm
-                handleSubmit={this.handleSubmit}
-                enableButton={this.enableButton}
-                disableButton={this.disableButton}
-                authMethod={authMethod}
-                authMethodLabel={authMethodLabel}
-              />
-            ) : authMethod === 'resetPassword' ? (
-              <PasswordResetForm
-                handleSubmit={this.handleSubmit}
-                enableButton={this.enableButton}
-                disableButton={this.disableButton}
-                authMethod={authMethod}
-                authMethodLabel={authMethodLabel}
-              />
-            ) : (
-              <AuthForm
-                enableButton={this.enableButton}
-                disableButton={this.disableButton}
-                authMethod={authMethod}
-                authMethodLabel={authMethodLabel}
-                handleSubmit={this.handleSubmit}
-                error={error}
-                signinWithUport={signinWithUport}
-              />
-            )}
-          </div>
-          <AuthFormFooter authMethod={authMethod} />
-        </div>
-        <div className="auth-page__footer">
-          <div className="logo-consensys">
-            <img
-              width="100px"
-              height="auto"
-              className="logo__large"
-              src="/assets/consensys-logo-white-transparent.png"
+          ) : authMethod === 'resetPassword' ? (
+            <PasswordResetForm
+              handleSubmit={this.handleSubmit}
+              enableButton={this.enableButton}
+              disableButton={this.disableButton}
+              authMethod={authMethod}
+              authMethodLabel={authMethodLabel}
             />
-          </div>
-        </div>
-      </div>
+          ) : (
+            <AuthForm
+              enableButton={this.enableButton}
+              disableButton={this.disableButton}
+              authMethod={authMethod}
+              authMethodLabel={authMethodLabel}
+              handleSubmit={this.handleSubmit}
+              error={error}
+              signinWithUport={signinWithUport}
+            />
+          )}
+        </RegistrationCard>
+        <RegistrationCardFooter authMethod={authMethod} />
+        <RegistrationFooter />
+      </RegistrationBackground>
     )
   }
 }

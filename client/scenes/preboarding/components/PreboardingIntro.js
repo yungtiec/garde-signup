@@ -1,7 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
+import * as colors from '../../../color-constants'
 
-export default ({}) => {
-  console.log("??")
-
-  return 'hello'
+const PreboardingIntro = ({}) => {
+  return 'hello rawrr'
 }
+
+export default PreboardingIntro

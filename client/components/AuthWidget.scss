@@ -1,0 +1,32 @@
+@import '../css/variables';
+
+.auth-widget--navbar {
+  position: relative;
+  cursor: pointer;
+}
+
+.auth-widget--navbar__dropdown {
+  position: absolute;
+  top: 69px;
+  right: 0;
+  z-index: 3;
+}
+
+.auth-widget--navbar__dropdown-item {
+  cursor: pointer;
+  border-style: solid;
+  border-color: $pizazz;
+  color: $pizazz;
+  border-width: 2px 2px 0px 2px;
+  padding-left: 10px;
+  width: 150px;
+  height: 48px;
+  background: white;
+  line-height: 46px;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.auth-widget--navbar__dropdown-item.last {
+  border-width: 2px 2px 2px 2px;
+}

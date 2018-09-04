@@ -2,8 +2,16 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
-import {me, isLoggedIn} from './store'
+import {
+  Login,
+  Signup,
+  LayoutWithNav,
+  RouteWithLayout,
+  RequestPasswordReset,
+  ResetPassword,
+  UserHome
+} from './components'
+import {me, isLoggedIn, initEnvironment} from './store'
 import {Preboarding} from './scenes'
 
 class Routes extends Component {
@@ -18,6 +26,16 @@ class Routes extends Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route
+          path="/request-password-reset"
+          component={RequestPasswordReset}
+        />
+        <Route path="/reset-password/:token" component={ResetPassword} />
+        <RouteWithLayout
+          layout={LayoutWithNav}
+          path="/home"
+          component={UserHome}
+        />
         <Route path="/preboarding" component={Preboarding} />
       </Switch>
     )
@@ -34,6 +52,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(initEnvironment())
     }
   }
 }

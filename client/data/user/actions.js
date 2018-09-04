@@ -32,14 +32,8 @@ export const auth = (userInfo, method) => dispatch => {
     .then(
       res => {
         dispatch(setUser(res.data))
-        if (res.data.preboarding_step !== 4)
-          history.push(
-            `/preboarding/${
-              res.data.preboarding_step === '0'
-                ? 'intro'
-                : res.data.preboarding_step
-            }`
-          )
+        if (res.data.preboard_step !== 4)
+          history.push(`/preboarding/${res.data.preboard_step}`)
         else {
           if (res.data.restricted_access) history.push('/user/profile')
           else if (!res.data.name)
